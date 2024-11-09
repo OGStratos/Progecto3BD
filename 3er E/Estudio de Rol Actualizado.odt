@@ -1,0 +1,74 @@
+Debido a que hay 5 tipos de roles que seran implementado en la base de datos, los maquinista, los administradores de materia,el default y el DBA(Data Base Admin) que es el que supervisa la base de datos.
+
+Maquinista:Tiene permisos de Select en la tabla producto, Select  y update en las tablas Maquina, Almacen y Bolsones.
+
+Permisos de Select, Insert y Update en las tablas:
+
+Bolsones_Se_usan_en_Maquina
+Maquina_Crea_Producto
+Crea_Se_almacena_Almacen
+
+Administrador de Materia: Tiene permisos de Select en la tabla proveedor y permisos de Select,Insert y Update en las tablas:
+
+Proveedor_Provee_Materia
+Materia_Se_guarda_Bolsones
+
+Administrador de Personal: Tiene permisos de Select, Insert y Update en las tablas: 
+
+Materia_Prima
+Maquina
+Producto
+Almacen
+Trabajadores
+Maquinista
+Administrador
+Administrador_Check_Crea
+
+DBA(Data Base Admin): Tiene todos los permisos sobre la base de datos.
+
+Default: Solo tiene permisos de Select en la tabla Login.
+
+
+Permisos en Consultas SQL.
+
+CREATE USER 'AdministradorMateria'@'localhost' IDENTIFIED BY 'hol327hfueqlhhd001vb';
+CREATE USER 'AdministradorPersonal'@'localhost' IDENTIFIED BY 'hol327hfueqlhhd243vb';
+CREATE USER 'Maquinista'@'localhost' IDENTIFIED BY 'hol23yrhfsdaue23bvxwp';
+CREATE USER 'DBA'@'localhost' IDENTIFIED BY 'hdwah12ehlsfabpqzxhjgyiu';
+CREATE USER 'Default'@'localhost' IDENTIFIED BY 'k2o321341efasfH';
+
+-- Permisos de Maquinista
+GRANT SELECT ON Producto TO 'Maquinista'@'localhost';
+GRANT SELECT, UPDATE ON Maquina TO 'Maquinista'@'localhost';
+GRANT SELECT, UPDATE ON Almacen TO 'Maquinista'@'localhost'; 
+GRANT SELECT, UPDATE ON Bolsones TO 'Maquinista'@'localhost';
+GRANT SELECT, INSERT, UPDATE ON Bolsones_Se_usan_en_Maquina TO 'Maquinista'@'localhost';
+GRANT SELECT, INSERT, UPDATE ON Maquina_Crea_Producto TO 'Maquinista'@'localhost';
+GRANT SELECT, INSERT, UPDATE ON Crea_Se_almacena_Almacen TO 'Maquinista'@'localhost';
+
+
+-- Permisos de AdministradorMateria
+GRANT SELECT ON Proveedor TO 'AdministradorMateria'@'localhost';
+GRANT SELECT, UPDATE ON Materia_Prima TO 'AdministradorMateria'@'localhost';
+GRANT SELECT, UPDATE ON Bolsones TO 'AdministradorMateria'@'localhost';
+GRANT SELECT, INSERT, UPDATE ON Proveedor_Provee_Materia TO 'AdministradorMateria'@'localhost';
+GRANT SELECT, INSERT, UPDATE ON Materia_Se_guarda_Bolsones TO 'AdministradorMateria'@'localhost';
+
+
+-- Permisos de AdministradorPersonal
+GRANT SELECT, INSERT, UPDATE ON Materia_Prima TO 'AdministradorPersonal'@'localhost';
+GRANT SELECT, INSERT, UPDATE ON Maquina TO 'AdministradorPersonal'@'localhost';
+GRANT SELECT, INSERT, UPDATE ON Producto TO 'AdministradorPersonal'@'localhost';
+GRANT SELECT, INSERT, UPDATE ON Almacen TO 'AdministradorPersonal'@'localhost';
+GRANT SELECT, INSERT, UPDATE ON Trabajadores TO 'AdministradorPersonal'@'localhost';
+GRANT SELECT, INSERT, UPDATE ON Maquinista TO 'AdministradorPersonal'@'localhost';
+GRANT SELECT, INSERT, UPDATE ON Administrador TO 'AdministradorPersonal'@'localhost';
+GRANT SELECT, INSERT, UPDATE ON Administración_Check_Crea TO 'AdministradorPersonal'@'localhost';
+
+-- Permisos de DBA
+GRANT ALL PRIVILEGES ON orderbylayer.* TO 'DBA'@'localhost';
+
+-- Permisos de Default
+GRANT SELECT ON orderbylayer.Login TO 'Default'@'localhost';
+
+FLUSH PRIVILEGES;

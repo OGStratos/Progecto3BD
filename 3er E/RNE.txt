@@ -1,0 +1,87 @@
+1. Trabajadores
+
+π CI(Administrador_Materia)⋈Trabajadores(CI)
+
+2. Maquinista 
+𝑀𝑎𝑞𝑢𝑖𝑛𝑖𝑠𝑡𝑎=𝜎ci∈𝑇𝑟𝑎𝑏𝑎𝑗𝑎𝑑𝑜𝑟𝑒𝑠(ci)
+
+3. Administrador_Personal
+Administrador_Personal=σ ci ∈ Trabajadores(ci)
+
+4.Administrador_Materia
+Administrador_Materia=σ ci ∈ Trabajadores(ci)
+​
+5. Materia_Prima
+
+π Tipo,Cantidad_Kg(Materia_Prima)
+
+6. Proveedor
+
+π Tipo,id,Estado(Proveedor)
+
+7. Bolsones
+
+π ID,Disponible(Bolsones)
+
+8. Maquina
+
+π Cod_Maquina,Estado,Fecha(Maquina)
+
+9. Producto
+
+π Molde,Precio(Producto)
+
+10. Almacen
+
+π Cod_Almacen,Espacio,Ciudad,Calle,Num_Puerta(Almacen)
+
+11. Proveedor_Provee_Materia
+
+πTipo_Proveedor,CI,Nombre,Apellido,Fecha,Tipo_Materia,Cantidad_kg(Proveedor_Provee_Materia)⋈Proveedor(Tipo_Proveedor)⋈Materia_Prima(Tipo_Materia)
+
+12. Materia_Se_guarda_Bolsones
+
+πTipo_Materia,Cantidad_kg,Fecha,ID_Bolson(Materia_Se_guarda_Bolsones)⋈Materia_Prima(Tipo_Materia)⋈Bolsones(ID_Bolson)
+
+13. Maquinista_Realiza_Crea
+
+πCI,Cod_Maquina,Cod_Lote,Cantidad_def,Cantidad_ok,Fecha,Molde,Precio,CI_Comprador(Maquinista_Realiza_Crea)⋈Maquinista(CI)⋈Maquina(Cod_Maquina)⋈Producto(Molde)
+
+14. Maquina_Crea_Producto
+
+π Cod_Maquina,Cod_Lote,Cantidad_def,Cantidad_ok,Fecha,Molde,Precio
+​(Maquina_Crea_Producto)⋈Maquina(Cod_Maquina)⋈Producto(Molde)
+
+15. Crea_Se_almacena_Almacen
+
+πCod_Lote,Cod_Almacen,Cod_Maquina,Molde,Fecha(Crea_Se_almacena_Almacen)⋈Maquina_Crea_Producto(Cod_Maquina,Cod_Lote,Molde)⋈Almacen(Cod_Almacen)
+
+16. Administración_Check_Crea
+
+πCI,Cod_Lote,Cod_Maquina,Molde,Validado(Administracion_Check_Crea)⋈Maquinista(CI)⋈Maquina_Crea_Producto(Cod_Maquina,Cod_Lote,Molde)
+
+17. Bolsones_Se_usan_en_Maquina
+
+πID,ID_Bolson,Cod_Maquina,Fecha(Bolsones_Se_usan_en_Maquina)⋈Bolsones(ID_Bolson)⋈Maquina(Cod_Maquina)
+
+18. Administrador_Vizualisa_Materia
+
+πCI,Tipo_Materia(Administrador_Materia×Materia_Prima)
+
+Vistas
+
+1.Login
+
+π CI,Rol,Contraseña(Login)
+
+2.VISTAMaquinista
+
+πci_trabajador,ci_maquinista(VISTAMaquinista)
+
+3.VISTAAdministradorP
+
+πci_trabajador,ci_administrador(VISTAAdministrador)
+
+3.VISTAAdministradorM
+
+πci_trabajador,ci_administrador(VISTAAdministrador)

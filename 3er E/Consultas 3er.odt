@@ -1,0 +1,50 @@
+1)Cantidad de productos defectuosos producidos por cada máquina, indicando el
+codigo de máquina, la cantidad y la fecha.
+
+SELECT Cantidad_def,Cod_Maquina,Fecha from Maquina_Crea_Producto group by Cod_Maquina;
+
+2)Cantidad de productos creados por máquina, agrupados por fecha y cliente.
+
+SELECT m.Cantidad_ok,m.Cantidad_def,c.Fecha,c.Cliente from  crea_se_almacena_almacen c join  Maquina_Crea_Producto m GROUP BY Cliente;
+
+3)Almacenes con más espacio disponible, ordenados de forma ascendente por
+dirección.
+
+SELECT Cod_almacen, Espacio, Direccion FROM Almacen ORDER BY Espacio DESC, Direccion asc;
+
+4)Crear una vista que obtenga el porcentaje del último mes de productos exitosos.
+
+CREATE VIEW promedio1 AS SELECT AVG((Cantidad_ok / (Cantidad_ok + Cantidad_def)) * 100) AS exitosos FROM Maquina_Crea_Producto  Fecha >= DATE_SUB(CURDATE(), INTERVAL 1 MONTH) GROUP BY Fecha;
+
+
+5) Obtener el historial de productos exitosos, que muestra cada año, la cantidad de
+productos que se han realizado.
+
+CREATE VIEW Promedio2 AS SELECT Fecha AS Año,COUNT(Cantidad_ok + Cantidad_def) AS Total_Productos,SUM(Cantidad_ok) AS exitosos FROM Maquina_Crea_Producto GROUP BY Fecha;
+
+6) Indicar que bolsones han sido utilizados y cuáles no, en una misma consulta.
+Ordenarlos por fecha descendente.
+
+SELECT b.ID AS Bolson_ID,IF(bsm.ID_B IS NULL, 'No Utilizado', 'Utilizado') AS Estado,bsm.Fecha AS Fecha_Uso
+FROM Bolsones b LEFT JOIN Bolsones_se_usan_en_Maquina bsm ON b.ID = bsm.ID_B ORDER BY bsm.Fecha DESC;
+
+
+7) Obtener la cantidad de bolsones activos e inactivos en el que se ha almacenado materia prima en el ultimo mes.
+
+SELECT COUNT(ID_Bolson) from bolsones_se_usan_en_maquina bsm where Fecha >= DATE_SUB(CURDATE(), INTERVAL 1 MONTH);
+
+8) Crear una vista que obtenga la cantidad de productos almacenados en cada uno de
+los almacenes.
+
+CREATE VIEW Cantidad_Productos_Almacenados AS SELECT Cod_Almacen,COUNT(ID) AS Cantidad_Productos
+FROM Crea_Se_almacena_Almacen GROUP BY Cod_Almacen;
+
+9) Indicar la cantidad de veces que se ha utilizado una máquina en el último mes.
+
+SELECT Cod_maquina,Fecha AS Cantidad_Veces_utilizada FROM Maquina_Crea_Producto WHERE Fecha >= DATE_SUB(CURDATE(), INTERVAL 1 MONTH)
+GROUP BY Cod_maquina;
+
+10) Obtener aquellos lotes que ningún administrador ha validado aún.
+
+SELECT l.Cod_Lote FROM Maquina_Crea_Producto l LEFT JOIN Administración_Check_Crea acc ON l.Cod_Lote = acc.Cod_Lote WHERE acc.Validado IS NULL;
+

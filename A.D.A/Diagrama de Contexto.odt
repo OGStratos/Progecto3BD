@@ -1,0 +1,39 @@
+Introduccion:
+
+El objetivo es proporcionar una vision mas general del alcance del proyecto.
+
+Identificacion del sistema central.
+
+Nombre: OrderByLayer.
+
+Descripcion general: Gstionar el flujo de materias primas, produccion y almacenamiento del producto.
+
+Actores Externos:
+
+Usuarios: Maquinista, Administrador_Materia y Administrador_Personal.
+
+Interacciones y flujo de Informacion.
+
+Los Maquinistas registran uso de maquinaria, consultar estado de maquinaria.
+
+Los Administradores_Personal gestionan inventario de materia prima, registrar nuevos proveedores.
+
+Los Administradors_Materia consultan stock de materias primas, gestionar almacenamiento de productos terminados.
+
+Tipo de datos o informacion intercambiada:
+
+Maquinista: Tipo de maquinaria, estado de maquinaria, cantidad de producción.
+
+Administrador_Personal: Datos de stock, detalles de proveedores.
+
+Administrador_Materia: Nivel de stock de materias primas y productos.
+
+Limites del sistema: El sistema puede abarcar la gestion de materias primas, produccion y almacenamiento, pero no incluir ventas o relaciones con clientes.
+
+Restricciones y Consideraciones: Debido a que la empresa cliente es una empresa privada el sistema no sera publico, por eso cuenta con un login para que al momento de logearse los usuarios inicien con restricciones para que no se pueda generar algun inconveniente. Cada uno de los roles(Maquinista, Administrador_Materia, Administrador_Personal) tiene restricciones en el sistema y cada uno tiene su apartado en especifico.
+
+Por ejemplo: El Maquinista solo tiene interacciones con el sistema para visualizar los bolsones disponibles para su uso, el estado de la maquinaria y la creacion de productos. Pero no tiene permisos para visualizar los datos sobre la cantidad de materia, los proveedores y los trabajadores.
+
+El Administrador_Materia interactua con el sistma para visualizar lo relacionado con la materia prima, su registro y su guardado en los bolsones.
+
+El Administrador_Personal interactua con el sistema para registrar a los trabajadores, a los proveedores, a las maquinarias, a las almacenes y para validar la creacion de lotes de producto.

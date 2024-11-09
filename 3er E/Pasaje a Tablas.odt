@@ -1,0 +1,84 @@
+Trabajadores(CI, Correo, Nombre, Apellido, Horario, Codigo, Contraseña, Ciudad, Calle, Num_Puerta, Rol, Estado, Fecha, Clave)
+PK: ci
+UK: codigo
+
+Administrador_Materia(CI)
+PK:CI
+FK: CI REFERENCES Trabajadores(CI)
+
+Maquinista(CI)
+PK: CI
+FK: CI REFERENCES Trabajadores(CI)
+
+Administrador_Personal(CI)
+PK: CI
+FK: CI REFERENCES Trabajadores(CI)
+
+Materia_Prima(Tipo, Cantidad_Kg)
+PK: Tipo
+
+Proveedor(Tipo, id, Estado)
+PK: Tipo
+
+Bolsones(ID, Disponible)
+PK: ID
+
+Maquina(Cod_Maquina, Estado, Fecha)
+PK: Cod_Maquina
+
+Producto(Molde, Precio)
+PK: Molde
+
+Almacen(Cod_Almacen, Espacio, Ciudad, Calle, Num_Puerta)
+PK: Cod_Almacen
+
+Proveedor_Provee_Materia(Tipo_Proveedor, CI, Nombre, Apellido, Fecha, Tipo_Materia,Cantidad_kg)
+PK: Tipo_Proveedor, Tipo_Materia, Fecha
+FK: Tipo_Proveedor REFERENCES Proveedor(Tipo)
+FK: Tipo_Materia REFERENCES Materia_Prima(Tipo)
+
+Materia_Se_guarda_Bolsones(Tipo_Materia, Cantidad_kg, Fecha, ID_Bolson)
+PK: Tipo_Materia, ID_Bolson, Fecha
+FK: Tipo_Materia REFERENCES Materia_Prima(Tipo)
+FK: ID_Bolson REFERENCES Bolsones(ID)
+
+Maquinista_Realiza_Crea(CI, Cod_Maquina, Cod_Lote, Cantidad_def, Cantidad_ok, Fecha, Molde, Precio, CI_Comprador)
+PK: CI, Cod_Maquina, Cod_Lote, Molde
+FK: CI REFERENCES Maquinista(ci)
+FK: Cod_Maquina REFERENCES Maquina(Cod_Maquina)
+FK: Molde REFERENCES Producto(Molde)
+
+Maquina_Crea_Producto(Cod_Maquina, Cod_Lote, Cantidad_def, Cantidad_ok, Fecha, Molde, Precio)
+PK: Cod_Maquina, Cod_Lote, Molde
+FK: Cod_Maquina REFERENCES Maquina(Cod_Maquina)
+FK: Molde REFERENCES Producto(Molde)
+
+Crea_Se_almacena_Almacen(Cod_Lote, Cod_Almacen, Cod_Maquina, Molde, Fecha, Cliente)
+PK: Cod_Lote, Cod_Almacen, Cod_Maquina, Fecha, Molde
+FK: Cod_Maquina, Cod_Lote, Molde REFERENCES Maquina_Crea_Producto(Cod_Maquina, Cod_Lote, Molde)
+FK: Cod_Almacen REFERENCES Almacen(Cod_Almacen)
+
+Administracion_Check_Crea(ID, CI, Cod_Lote, Cod_Maquina, Molde, Validado)
+PK: ID, Cod_Lote
+FK: CI REFERENCES Maquinista(ci)
+FK: Cod_Maquina, Cod_Lote, Molde REFERENCES Maquina_Crea_Producto(Cod_Maquina, Cod_Lote, Molde)
+
+Bolsones_Se_usan_en_Maquina(ID, ID_Bolson, Cod_Maquina, Fecha)
+PK: ID
+FK: ID_Bolson REFERENCES Bolsones(ID)
+FK: Cod_Maquina REFERENCES Maquina(Cod_Maquina)
+
+Vistas:
+
+Login(CI, Rol, Contraseña)
+
+LoginUpdate(CI, Clave)
+
+VISTAMaquinista(ci_trabajador, ci_maquinista)
+
+VISTAAdministradorMateria(ci_trabajador, ci_Administrador_Materia)
+
+VISTAAdministradorPersonal(ci_trabajador, ci_Administrador_Personal)
+
+
+

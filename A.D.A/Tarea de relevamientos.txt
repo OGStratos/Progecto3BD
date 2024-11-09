@@ -1,0 +1,21 @@
+Tareas de relevamiento.
+
+Relevamiento
+
+Entrevista:
+Se entrevista a un miembro involucrado con la empresa(en este caso el profesor de Gestión de 
+Proyecto debido al incendió de la empresa) con el objetivo de obtener información para 
+generar una base más sólida y más detallada del Software.
+
+Preguntas de la entrevista:
+
+¿Qué protocolo utilizan?
+
+¿Cada cuanto tiempo se respalda la información?
+
+¿Dónde esta el servidor?
+
+¿Qué seguridad tiene el servidor?
+
+¿Por que eligieron Rocky Linux como sistema operativo?
+

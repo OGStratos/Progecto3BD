@@ -1,0 +1,132 @@
+CREATE TABLE Trabajadores (
+    ci INT PRIMARY KEY,
+    correo VARCHAR(20),
+    nombre VARCHAR(25),
+    horario VARCHAR(25),
+    codigo VARCHAR(25),
+    Contraseña VARCHAR(25),
+    calle VARCHAR(25),
+    Num_Puerta VARCHAR(25),
+    UNIQUE KEY (codigo)
+
+);
+
+CREATE TABLE Maquinista (
+    ci INT PRIMARY KEY,
+    FOREIGN KEY (ci) REFERENCES Trabajadores(ci)
+);
+
+CREATE TABLE Administrador (
+    ci INT PRIMARY KEY,
+    FOREIGN KEY (ci) REFERENCES Trabajadores(ci)
+);
+
+CREATE TABLE Materia_Prima (
+    ID INT PRIMARY KEY,
+    Cantidad DECIMAL(10, 2)
+);
+
+CREATE TABLE Tipo_Materia (
+    ID_M INT,
+    Tipo VARCHAR(25),
+    PRIMARY KEY (ID_M, Tipo),
+    FOREIGN KEY (ID_M) REFERENCES Materia_Prima(ID)
+);
+
+CREATE TABLE Proveedor (
+    ID int,
+    Tipo VARCHAR(25),
+    Cantidad_Kg DECIMAL(10, 2),
+    PRIMARY KEY(ID)
+);
+
+CREATE TABLE Bolsones (
+    ID INT PRIMARY KEY
+);
+
+CREATE TABLE Maquina (
+    Cod_Maquina INT PRIMARY KEY,
+    Estado VARCHAR(25)
+);
+
+CREATE TABLE Producto (
+   ID INT PRIMARY KEY,
+    Precio DECIMAL(10, 2)
+);
+
+CREATE TABLE Almacen (
+    Cod_Almacen INT PRIMARY KEY,
+    Espacio VARCHAR(25),
+    Direccion VARCHAR(25)
+);
+
+CREATE TABLE Proveedor_Provee_Materia (
+    ID_P INT,
+    Fecha DATE,
+    ID_M INT,
+    PRIMARY KEY (ID_P, ID_M, Fecha),
+    FOREIGN KEY (ID_P) REFERENCES Proveedor(ID),
+    FOREIGN KEY (ID_M) REFERENCES Materia_Prima(ID)
+);
+
+CREATE TABLE Materia_Se_guarda_Bolsones (
+    ID_M INT,
+    Cantidad_kg DECIMAL(10, 2),
+    Fecha DATE,
+    ID_B INT,
+    PRIMARY KEY (ID_M, ID_B, Fecha),
+    FOREIGN KEY (ID_M) REFERENCES Materia_Prima(ID),
+    FOREIGN KEY (ID_B) REFERENCES Bolsones(ID)
+);
+
+CREATE TABLE Maquinista_Utiliza_Maquina (
+    CI INT,
+    Cod_Maquina INT,
+    PRIMARY KEY (CI, Cod_Maquina),
+    FOREIGN KEY (CI) REFERENCES Maquinista(ci),
+    FOREIGN KEY (Cod_Maquina) REFERENCES Maquina(Cod_Maquina)
+);
+
+CREATE TABLE Maquina_Crea_Producto (
+    Cod_Maquina INT,
+    Cod_Lote INT,
+    Cantidad_def INT,
+    Cantidad_ok INT,
+    Fecha DATE,
+    ID INT,
+    PRIMARY KEY (Cod_Maquina,Cod_Lote,ID),
+    FOREIGN KEY (Cod_Maquina) REFERENCES Maquina(Cod_Maquina),
+    FOREIGN KEY (ID) REFERENCES Producto(ID)
+);
+
+CREATE TABLE Crea_Se_almacena_Almacen (
+    Cod_Lote INT,
+    Cod_Almacen INT,
+    Cod_Maquina INT,
+    ID INT,
+    Fecha DATE,
+    Cliente VARCHAR(25),
+    PRIMARY KEY (Cod_Lote,Cod_Almacen,Cod_Maquina,Fecha,ID),
+    FOREIGN KEY (Cod_Maquina,Cod_Lote,ID) REFERENCES Maquina_Crea_Producto(Cod_Maquina,Cod_Lote,ID),
+    FOREIGN KEY (Cod_Almacen) REFERENCES Almacen(Cod_Almacen)
+);
+
+CREATE TABLE Administración_Check_Crea (
+    CI INT,
+    Cod_Lote INT,
+    Cod_Maquina INT,
+    ID INT,
+    Validado BOOLEAN,
+    PRIMARY KEY (CI, Cod_Lote, Cod_Maquina,ID),
+    FOREIGN KEY (CI) REFERENCES Maquinista(ci),
+    FOREIGN KEY (Cod_Maquina,Cod_Lote,ID) REFERENCES Maquina_Crea_Producto(Cod_Maquina,Cod_Lote,ID),
+);
+
+CREATE TABLE Bolsones_Se_usan_en_Maquina (
+    ID_B INT,
+    Cod_Maquina INT,
+    Fecha DATE,
+    PRIMARY KEY (ID_B, Cod_Maquina, Fecha ),
+    FOREIGN KEY (ID_B) REFERENCES Bolsones(ID),
+    FOREIGN KEY (Cod_Maquina) REFERENCES Maquina(Cod_Maquina)
+);

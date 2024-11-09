@@ -1,0 +1,299 @@
+Especificación de Requerimientos (IEEE 830)
+Primera Entrega
+Relevamiento
+
+Descripción: Empleo de técnicas de recolección de datos (entrevistas, encuestas, observación) para entender las necesidades de los usuarios y el funcionamiento actual de la empresa.
+Requerimientos:
+Formularios de encuesta para empleados y gerentes.
+Herramientas de análisis de datos recolectados.
+Estudio de Factibilidad
+
+Descripción: Análisis de la viabilidad técnica, económica y operativa del sistema propuesto.
+Requerimientos:
+Documentación de costos estimados.
+Evaluación de tecnologías disponibles.
+Análisis de la capacidad del personal para implementar el sistema.
+Análisis F.O.D.A.
+
+Descripción: Evaluación de las fortalezas, oportunidades, debilidades y amenazas del sistema operativo.
+Requerimientos:
+Documento que contenga el análisis F.O.D.A. detallado.
+Análisis Costo-Beneficio
+
+Descripción: Evaluación de los costos en relación con los beneficios esperados del sistema.
+Requerimientos:
+Hoja de cálculo con los costos y beneficios proyectados.
+Especificación de Requerimientos (IEEE 830)
+
+Descripción: Documento que detalla los requerimientos funcionales y no funcionales del sistema.
+Requerimientos:
+Lista de requerimientos funcionales.
+Requerimientos de rendimiento, seguridad, usabilidad, etc.
+Diagrama de Casos de Uso
+
+Descripción: Representación gráfica de las interacciones entre los usuarios y el sistema.
+Requerimientos:
+Diagrama que muestre los actores, casos de uso y sus interacciones.
+Modelo Esencial
+
+a. Modelo Ambiental
+Descripción: Representación del contexto en el que opera el sistema.
+Requerimientos:
+Diagrama que ilustre las interacciones entre el sistema y su entorno.
+b. Modelo de Comportamiento
+Descripción: Descripción de cómo se comporta el sistema ante diferentes situaciones.
+Requerimientos:
+Diagramas de actividades o estados que representen el comportamiento del sistema.
+Segunda Entrega
+Cálculo de Métricas del Producto
+
+Descripción: Evaluación de métricas relacionadas con el rendimiento del sistema.
+Requerimientos:
+Métricas a evaluar (ej. tiempo de respuesta, carga del sistema).
+Especificaciones de Casos de Uso
+
+Descripción: Documentación detallada de cada caso de uso identificado.
+Requerimientos:
+Descripción de cada caso de uso, actores involucrados y flujos alternativos.
+Diccionario de Datos
+
+Descripción: Glosario de términos y definiciones utilizados en el sistema.
+Requerimientos:
+Lista de entidades, atributos y sus descripciones.
+Especificación de Procesos (Diagrama Nassi-Schneiderman)
+
+Descripción: Representación gráfica de la lógica de los procesos del sistema.
+Requerimientos:
+Diagramas que representen los procesos de negocio.
+UML
+
+a. Diagrama de Transición de Estados
+Descripción: Representación de los estados de un objeto y sus transiciones.
+Requerimientos:
+Diagrama que muestre los estados y transiciones del sistema.
+b. Diagrama de Clases
+Descripción: Representación de las clases y sus relaciones.
+Requerimientos:
+Diagrama que muestre las clases y sus atributos/métodos.
+c. Diagrama de Actividades
+Descripción: Representación de los flujos de trabajo.
+Requerimientos:
+Diagrama que ilustre los flujos de actividades del sistema.
+d. Diagrama de Paquetes
+Descripción: Representación de los componentes del sistema organizados en paquetes.
+Requerimientos:
+Diagrama que muestre la organización de los componentes del sistema.
+Tercera Entrega
+Plan de Testing
+
+Descripción: Documento que detalla los casos de prueba para verificar el funcionamiento del sistema.
+Requerimientos:
+Casos de prueba funcionales y no funcionales.
+Criterios de aceptación.
+Gestión de Riesgo: Plan de Riesgo
+
+Descripción: Identificación y análisis de riesgos asociados con el proyecto.
+Requerimientos:
+Lista de riesgos, su probabilidad, impacto y plan de mitigación.
+Manuales
+
+a. Manual de Usuario
+Descripción: Guía para el usuario final sobre cómo usar el sistema.
+Requerimientos:
+Instrucciones de uso, funciones y ejemplos.
+b. Manual de Instalación
+Descripción: Instrucciones para la instalación del sistema.
+Requerimientos:
+Pasos detallados para la instalación y configuración del sistema.
+Bibliografía
+
+Descripción: Lista de referencias utilizadas en el proyecto.
+Requerimientos:
+Formato de citas (APA, MLA, etc.).
+Base de Datos II
+Primera Entrega
+Análisis de la Realidad
+
+Descripción: Evaluación del estado actual de la base de datos.
+Requerimientos:
+Documentación del sistema actual y sus deficiencias.
+Diagrama Entidad Relación
+
+Descripción: Representación gráfica de las entidades y sus relaciones.
+Requerimientos:
+Diagrama que muestre entidades, atributos y relaciones.
+Esquema Relacional Normalizado (3ra FN)
+
+Descripción: Estructura de la base de datos normalizada.
+Requerimientos:
+Descripción de las tablas y sus relaciones.
+Diccionario de Datos
+
+Descripción: Glosario de términos y definiciones para la base de datos.
+Requerimientos:
+Lista de tablas, columnas y sus descripciones.
+Segunda Entrega
+Modelo Entidad Relación Corregido
+
+Descripción: Versión ajustada del diagrama entidad-relación.
+Requerimientos:
+Diagrama actualizado con correcciones.
+Álgebra Relacional
+
+Descripción: Expresiones para la manipulación de datos en la base de datos.
+Requerimientos:
+Ejemplos de operaciones en álgebra relacional.
+Estudio de los Permisos a la Base de Datos (Roles)
+
+Descripción: Análisis de roles de usuarios y sus permisos.
+Requerimientos:
+Documentación de roles y permisos asociados.
+Asignación de Permisos (Sentencias)
+
+Descripción: Sentencias SQL para asignar permisos a los usuarios.
+Requerimientos:
+Ejemplos de sentencias SQL para asignar roles.
+Primera Implementación de la Base de Datos en MySQL con Datos de Prueba Cargados
+
+Descripción: Creación y carga inicial de la base de datos.
+Requerimientos:
+Scripts de creación de tablas y carga de datos de prueba.
+Base de Datos Creada en el Servidor de la Institución
+
+Descripción: Implementación de la base de datos en el entorno de producción.
+Requerimientos:
+Documentación de la configuración del servidor.
+Dump de la Base de Datos
+
+Descripción: Respaldo de la base de datos en un archivo.
+Requerimientos:
+Generación del dump y su almacenamiento.
+Consultas Indicadas por el Docente (1ra versión)
+
+Descripción: Consultas SQL requeridas por el docente para la evaluación.
+Requerimientos:
+Ejemplos de consultas SQL a ser presentadas.
+Tercera Entrega
+Modelo Entidad Relación
+
+Descripción: Diagrama entidad-relación actualizado tras la implementación.
+Requerimientos:
+Diagrama final que refleje las modificaciones realizadas.
+Diccionario de Datos
+
+Descripción: Actualización del diccionario de datos con cambios realizados.
+Requerimientos:
+Lista revisada de tablas y columnas.
+Permisos a la Base de Datos
+
+Descripción: Revisión de permisos y su aplicación.
+Requerimientos:
+Documentación de la gestión de permisos.
+Primera Versión de Carga de Datos desde un Archivo CSV
+
+Descripción: Implementación de la carga de datos desde archivos CSV.
+Requerimientos:
+Scripts para la carga de datos.
+Consultas Indicadas por el Docente (2da versión)
+
+Descripción: Segunda entrega de consultas SQL requeridas por el docente.
+Requerimientos:
+Ejemplos de consultas actualizadas y más complejas.
+
+Programación Web (Backend en PHP)
+Estructura Básica y Autenticación:
+
+Requerimientos:
+Implementación de la estructura MVC (Modelo, Vista, Controlador).
+Creación de directorios y archivos para Modelos, Vistas y Controladores.
+Desarrollo del modelo de usuario para la autenticación.
+Implementación de la lógica de control para manejar la autenticación de usuarios.
+Manejo de sesiones y roles de usuarios.
+Gestión de Materia Prima y Producción:
+
+Requerimientos:
+Creación de modelos y controladores para administrar materia prima.
+Implementación de funcionalidades para crear, actualizar y visualizar información sobre materia prima.
+Desarrollo de un sistema para registrar y monitorear la producción.
+Registro y seguimiento de productos defectuosos.
+Reporte y validación de la producción por parte de los supervisores.
+Integración Completa:
+
+Requerimientos:
+Creación de modelos y controladores para gestionar información de empleados.
+Lógica para registrar la producción individual de cada empleado y ajuste de turnos.
+Control de calidad de los productos.
+Gestión de inventario de productos terminados y seguimiento de los almacenes.
+Generación de informes detallados sobre producción y calidad.
+Gestión de Proyectos
+Control de Versionado:
+
+Requerimientos:
+Establecer un sistema de control de versiones utilizando Git.
+Documentación de inicio y planificación del proyecto.
+Documentación de Gestión:
+
+Requerimientos:
+Elaboración de actas de reuniones.
+Elaboración de diagramas de Gantt y PERT para el cronograma del proyecto.
+Documentación de planificación y control.
+Plan de Contingencias:
+
+Requerimientos:
+Identificación de riesgos y su impacto.
+Planificación de medidas para mitigar los riesgos.
+Formación Empresarial
+Nombre de la Empresa, Logo y Fundamentos:
+
+Requerimientos:
+Definición de la identidad visual de la empresa, incluyendo el logo y la psicología del color.
+Documentación de los fundamentos de la empresa.
+Misión y Visión:
+
+Requerimientos:
+Definición clara de la misión y visión de la empresa.
+Valores de la Organización:
+
+Requerimientos:
+Identificación y documentación de los valores fundamentales de la organización.
+Sistemas Operativos
+Relevamiento y Justificación:
+
+Requerimientos:
+Presentación del sistema operativo a utilizar en el servidor.
+Justificación de la elección del sistema operativo.
+Análisis del Entorno:
+
+Requerimientos:
+Estudio de mercado y análisis de la competencia.
+Plan de Recursos:
+
+Requerimientos:
+Plan de recursos necesarios para la puesta en marcha de la empresa.
+Inglés
+Folleto Publicitario:
+
+Requerimientos:
+Creación de un flyer publicitario del producto en inglés, con imágenes y textos explicativos.
+Manual de Usuario:
+
+Requerimientos:
+Elaboración de un manual de usuario del proyecto en inglés, explicando su uso.
+Presentación Oral:
+
+Requerimientos:
+Preparación de una presentación oral del proyecto en inglés, o un video explicativo.
+Matemáticas
+Análisis de Rubros:
+
+Requerimientos:
+Hoja de cálculo que muestre el porcentaje de incidencia de cada rubro o ítem en el área elegida.
+Inserción de un diagrama de sectores con los nombres de los rubros y sus porcentajes.
+Planilla de Presupuesto:
+
+Requerimientos:
+Creación de una planilla detallada con todos los rubros y cálculo del IVA.
+Cálculos Matemáticos Adicionales:
+
+Requerimientos:
+Inclusión de cualquier otro análisis o cálculo matemático relevante para el proyecto.

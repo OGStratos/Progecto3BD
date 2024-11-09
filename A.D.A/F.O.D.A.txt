@@ -1,0 +1,21 @@
+Fortalezas
+Mejora en la Gestión: El sistema permitirá una mejor gestión de la materia prima y del proceso de producción, aumentando la eficiencia y reduciendo el desperdicio.
+Trazabilidad: Con el etiquetado de bolsas y seguimiento del material, se mejorará la trazabilidad, facilitando el control de calidad.
+Control de Inventario: Implementación de un sistema para el control de inventario, lo que ayudará a conocer la cantidad exacta de productos y materias primas.
+Informes y Análisis: La capacidad de generar informes permitirá a la dirección tomar decisiones más informadas.
+Registro de Producción: El sistema proporcionará datos precisos sobre la producción, incluyendo cantidades de productos defectuosos y buenos.
+Oportunidades
+Aumento de la Productividad: La implementación del sistema puede llevar a un aumento en la producción y a una reducción de los costos operativos a largo plazo.
+Capacitación del Personal: El proyecto puede servir como una oportunidad para capacitar a los empleados en nuevas tecnologías, mejorando sus habilidades y la moral del equipo.
+Adaptación a Nuevas Normativas: Un sistema más organizado puede ayudar a la empresa a adaptarse a normativas ambientales y de calidad en constante cambio.
+Potencial de Expansión: Con un sistema eficiente, la empresa podría considerar expandir su producción o diversificar su línea de productos.
+Debilidades
+Falta de Experiencia del Equipo: El equipo de desarrollo está formado por estudiantes y no son expertos, lo que podría resultar en errores o demoras durante el desarrollo.
+Capacitación Inicial Necesaria: Se necesitará tiempo y recursos para capacitar a los empleados en el uso del nuevo sistema.
+Dependencia de la Tecnología: La implementación del sistema dependerá de la infraestructura tecnológica existente, que podría no estar a la altura de las necesidades.
+Resistencia al Cambio: Algunos empleados podrían ser reacios a adoptar el nuevo sistema debido a la comodidad con los procesos existentes.
+Amenazas
+Problemas Técnicos: La posibilidad de problemas técnicos durante la implementación que podrían interrumpir la producción.
+Falta de Presupuesto: La falta de recursos económicos podría limitar la implementación y el soporte del sistema.
+Competencia: Otras empresas pueden implementar soluciones más eficientes, lo que podría poner a Bioplast en desventaja.
+Cambios en el Mercado: Fluctuaciones en la demanda de productos o cambios en los precios de las materias primas que podrían afectar la viabilidad del negocio.

@@ -1,0 +1,214 @@
+CREATE DATABASE orderbylayer;
+USE orderbylayer;
+
+CREATE TABLE Trabajadores (
+    ci INT PRIMARY KEY NOT NULL,
+    Correo VARCHAR(20) NOT NULL,
+    Nombre VARCHAR(25) NOT NULL,
+    Apellido Varchar(25) NOT NULL ,
+    Horario VARCHAR(25)NOT NULL,
+    Codigo INT AUTO_INCREMENT UNIQUE,
+    Contraseña VARCHAR(60) NOT NULL,
+    Ciudad VARCHAR(25) NOT NULL,
+    Calle VARCHAR(25) NOT NULL,
+    Num_Puerta VARCHAR(25) NOT NULL,
+    Estado_Laboral VARCHAR(25) NOT NULL,
+    Rol VARCHAR (30) NOT NULL,
+    Fecha DATETIME NOT NULL,
+    Clave VARCHAR (6) NOT NULL
+);
+
+CREATE TABLE Maquinista (
+    ci INT PRIMARY KEY NOT NULL,
+    FOREIGN KEY (ci) REFERENCES Trabajadores(ci)
+);
+
+CREATE TABLE Administrador_Personal (
+    ci INT PRIMARY KEY NOT NULL,
+    FOREIGN KEY (ci) REFERENCES Trabajadores(ci)
+);
+
+CREATE TABLE Administrador_Materia (
+    ci INT PRIMARY KEY NOT NULL,
+    FOREIGN KEY (ci) REFERENCES Trabajadores(ci)
+);
+
+CREATE TABLE Materia_Prima (
+    Tipo VARCHAR(30) PRIMARY KEY NOT NULL,
+    Cantidad DECIMAL(10, 2)
+);
+
+CREATE TABLE Proveedor (
+    Tipo VARCHAR(25) PRIMARY KEY NOT NULL,
+    ID INT AUTO_INCREMENT UNIQUE,
+    Estado VARCHAR(25) NOT NULL
+);
+
+CREATE TABLE Bolsones (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    Disponible VARCHAR(10)NOT NULL
+);
+
+CREATE TABLE Maquina (
+    Cod_Maquina INT AUTO_INCREMENT PRIMARY KEY,
+    Estado VARCHAR(25) NOT NULL,
+    Fecha DATETIME NOT NULL
+);
+
+CREATE TABLE Producto (
+    Molde VARCHAR(20) PRIMARY KEY NOT NULL, 
+    Precio DECIMAL(10, 2) NOT NULL
+);
+
+CREATE TABLE Almacen (
+    Cod_Almacen INT AUTO_INCREMENT PRIMARY KEY,
+    Espacio INT NOT NULL,
+    Ciudad VARCHAR(25) NOT NULL,
+    Calle VARCHAR(25) NOT NULL,
+    Num_Puerta VARCHAR(25) NOT NULL
+);
+
+CREATE TABLE Proveedor_Provee_Materia (
+    Tipo_Proveedor VARCHAR(25) NOT NULL,
+    CI INT NOT NULL,
+    Nombre VARCHAR(30) NOT NULL,
+    Apellido VARCHAR(30) NOT NULL,
+    Fecha DATETIME NOT NULL,
+    Tipo_Materia VARCHAR(30) NOT NULL,
+    Cantidad_Provee DECIMAL(10, 2) NOT NULL,
+    PRIMARY KEY (Tipo_Proveedor, Tipo_Materia, Fecha),
+    FOREIGN KEY (Tipo_Proveedor) REFERENCES Proveedor(Tipo),
+    FOREIGN KEY (Tipo_Materia) REFERENCES Materia_Prima(Tipo)
+);
+
+CREATE TABLE Materia_Se_guarda_Bolsones (
+    Tipo_Materia VARCHAR(30) NOT NULL,
+    Cantidad_kg DECIMAL(10, 2) NOT NULL,
+    Fecha DATETIME NOT NULL,
+    ID_Bolson INT NOT NULL,
+    PRIMARY KEY (Tipo_Materia, ID_Bolson, Fecha),
+    FOREIGN KEY (Tipo_Materia) REFERENCES Materia_Prima(Tipo),
+    FOREIGN KEY (ID_Bolson) REFERENCES Bolsones(ID)
+);
+
+
+CREATE TABLE Maquina_Crea_Producto (
+    Cod_Maquina INT NOT NULL,
+    Cod_Lote INT AUTO_INCREMENT UNIQUE,
+    Cantidad_def INT NOT NULL,
+    Cantidad_ok INT NOT NULL,
+    Fecha DATETIME NOT NULL,
+    Molde VARCHAR(20) NOT NULL,
+    Precio DECIMAL(10, 2) NOT NULL,
+    PRIMARY KEY (Cod_Maquina, Cod_Lote, Molde),
+    FOREIGN KEY (Cod_Maquina) REFERENCES Maquina(Cod_Maquina),
+    FOREIGN KEY (Molde) REFERENCES Producto(Molde)
+);
+
+CREATE TABLE Maquinista_Realiza_Crea (
+    CI INT NOT NULL,
+    Cod_Maquina INT NOT NULL,
+    Cod_Lote INT NOT NULL,
+    Molde VARCHAR(20) NOT NULL,
+    Fecha DATETIME NOT NULL,
+    PRIMARY KEY (Fecha),
+    FOREIGN KEY (CI) REFERENCES Maquinista(ci),
+    FOREIGN KEY (Cod_Maquina, Cod_Lote, Molde) REFERENCES Maquina_Crea_Producto(Cod_Maquina, Cod_Lote, Molde)
+);
+
+CREATE TABLE Crea_Se_almacena_Almacen (
+    Cod_Lote INT NOT NULL,
+    Cod_Almacen INT NOT NULL,
+    Cod_Maquina INT NOT NULL,
+    Molde VARCHAR(20) NOT NULL,
+    Fecha DATETIME NOT NULL,
+    Cliente VARCHAR(25) NOT NULL,
+    PRIMARY KEY (Cod_Lote, Fecha),
+    FOREIGN KEY (Cod_Maquina, Cod_Lote, Molde) REFERENCES Maquina_Crea_Producto(Cod_Maquina, Cod_Lote, Molde),
+    FOREIGN KEY (Cod_Almacen) REFERENCES Almacen(Cod_Almacen)
+);
+
+CREATE TABLE Administración_Check_Crea (
+    ID INT AUTO_INCREMENT,
+    CI INT NOT NULL,
+    Cod_Lote INT NOT NULL,
+    Cod_Maquina INT NOT NULL,
+    Molde VARCHAR(20) NOT NULL,
+    Validado VARCHAR(10) NOT NULL,
+    PRIMARY KEY (ID, Cod_Lote),
+    FOREIGN KEY (CI) REFERENCES Administrador_Personal(ci),
+    FOREIGN KEY (Cod_Maquina, Cod_Lote, Molde) REFERENCES Maquina_Crea_Producto(Cod_Maquina, Cod_Lote, Molde)
+);
+
+CREATE TABLE Bolsones_Se_usan_en_Maquina (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    ID_Bolson INT NOT NULL,
+    Cod_Maquina INT NOT NULL,
+    Fecha DATETIME NOT NULL,
+    FOREIGN KEY (ID_Bolson) REFERENCES Bolsones(ID),
+    FOREIGN KEY (Cod_Maquina) REFERENCES Maquina(Cod_Maquina)
+);
+
+
+Create VIEW Login(CI,Contraseña,Rol) AS SELECT CI,Contraseña,Rol FROM trabajadores;
+
+Create VIEW LoginUpdate(CI,Clave) AS SELECT CI,Clave FROM trabajadores;
+
+CREATE VIEW VISTAMaquinista AS SELECT T.ci AS ci_trabajador, M.ci AS ci_maquinista FROM Trabajadores T, Maquinista M;
+
+CREATE VIEW VISTAAdministradorPersonal AS SELECT T.ci AS ci_trabajador, A.ci AS ci_administrador_personal FROM Trabajadores T, Administrador_Personal A;
+
+CREATE VIEW VISTAAdministradorMateria AS SELECT T.ci AS ci_trabajador, A.ci AS ci_administrador_materia FROM Trabajadores T, Administrador_Materia A;
+
+
+CREATE USER 'AdministradorMateria'@'localhost' IDENTIFIED BY 'hol327hfueqlhhd001vb';
+CREATE USER 'AdministradorPersonal'@'localhost' IDENTIFIED BY 'hol327hfueqlhhd243vb';
+CREATE USER 'Maquinista'@'localhost' IDENTIFIED BY 'hol23yrhfsdaue23bvxwp';
+CREATE USER 'DBA'@'localhost' IDENTIFIED BY 'hdwah12ehlsfabpqzxhjgyiu';
+CREATE USER 'Default'@'localhost' IDENTIFIED BY 'k2o321341efasfH';
+
+-- Permisos de Maquinista
+GRANT SELECT ON Producto TO 'Maquinista'@'localhost';
+GRANT SELECT, UPDATE ON Maquina TO 'Maquinista'@'localhost';
+GRANT SELECT, UPDATE ON Almacen TO 'Maquinista'@'localhost'; 
+GRANT SELECT, UPDATE ON Bolsones TO 'Maquinista'@'localhost';
+GRANT SELECT, INSERT, UPDATE ON Bolsones_Se_usan_en_Maquina TO 'Maquinista'@'localhost';
+GRANT SELECT, INSERT, UPDATE ON Maquina_Crea_Producto TO 'Maquinista'@'localhost';
+GRANT SELECT, INSERT, UPDATE ON Crea_Se_almacena_Almacen TO 'Maquinista'@'localhost';
+GRANT SELECT, INSERT, UPDATE ON Administración_Check_Crea TO 'Maquinista'@'localhost';
+GRANT SELECT, INSERT, UPDATE ON Maquinista_Realiza_Crea TO 'Maquinista'@'localhost';
+
+
+-- Permisos de AdministradorMateria
+GRANT SELECT ON Proveedor TO 'AdministradorMateria'@'localhost';
+GRANT SELECT, UPDATE ON Materia_Prima TO 'AdministradorMateria'@'localhost';
+GRANT SELECT, UPDATE, INSERT ON Bolsones TO 'AdministradorMateria'@'localhost';
+GRANT SELECT, INSERT, UPDATE ON Proveedor_Provee_Materia TO 'AdministradorMateria'@'localhost';
+GRANT SELECT, INSERT, UPDATE ON Materia_Se_guarda_Bolsones TO 'AdministradorMateria'@'localhost';
+
+
+-- Permisos de AdministradorPersonal
+GRANT SELECT, INSERT, UPDATE ON Materia_Prima TO 'AdministradorPersonal'@'localhost';
+GRANT SELECT, INSERT, UPDATE ON Maquina TO 'AdministradorPersonal'@'localhost';
+GRANT SELECT, INSERT, UPDATE, DELETE ON Producto TO 'AdministradorPersonal'@'localhost';
+GRANT SELECT, INSERT, UPDATE ON Almacen TO 'AdministradorPersonal'@'localhost';
+GRANT SELECT, INSERT, UPDATE ON Trabajadores TO 'AdministradorPersonal'@'localhost';
+GRANT SELECT, INSERT, UPDATE ON Maquinista TO 'AdministradorPersonal'@'localhost';
+GRANT SELECT, INSERT, UPDATE ON Administrador_Personal TO 'AdministradorPersonal'@'localhost';
+GRANT SELECT, INSERT, UPDATE ON Administrador_Materia TO 'AdministradorPersonal'@'localhost';
+GRANT SELECT, INSERT, UPDATE ON Administración_Check_Crea TO 'AdministradorPersonal'@'localhost';
+GRANT SELECT, INSERT, UPDATE ON Proveedor TO 'AdministradorPersonal'@'localhost';
+GRANT SELECT ON Maquina_Crea_Producto TO 'AdministradorPersonal'@'localhost';
+GRANT SELECT ON Crea_Se_almacena_Almacen TO 'AdministradorPersonal'@'localhost';
+
+
+
+-- Permisos de DBA
+GRANT ALL PRIVILEGES ON orderbylayer.* TO 'DBA'@'localhost';
+
+-- Permisos de Default
+GRANT SELECT ON orderbylayer.Login TO 'Default'@'localhost';
+GRANT SELECT ON orderbylayer.LoginUpdate TO 'Default'@'localhost';
+GRANT SELECT,UPDATE ON orderbylayer.Trabajadores TO 'Default'@'localhost';
+GRANT SELECT ON orderbylayer.Administrador_Personal TO 'Default'@'localhost';
+GRANT SELECT ON orderbylayer.Maquinista TO 'Default'@'localhost';

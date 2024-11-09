@@ -1,0 +1,69 @@
+Métricas Punto de Función
+
+1. Introducción
+
+Este documento describe el análisis de métrica de Punto de Función (PF) presentado en la hoja de cálculo, utilizado para estimar el tamaño funcional del software. La métrica Punto de Función es una técnica estándar que mide el tamaño del software en términos de sus funcionalidades externas, permitiendo valorar el esfuerzo requerido para su desarrollo o mantenimiento.
+
+2. Descripción de los Campos
+
+La hoja contiene información sobre los tipos de funcionalidades externas del sistema, categorizadas en tres niveles de complejidad (Baja, Media, y Alta), junto con sus correspondientes valores en Puntos de Función.
+
+Los campos identificados en la hoja son:
+
+Tipo/Complejidad: Descripción general del tipo de funcionalidad (Ejemplo: Entradas Externas) y su clasificación según la complejidad.
+Complejidad Baja, Media, Alta: Columnas que muestran el cálculo de los Puntos de Función según la complejidad del elemento.
+Total: Suma de los puntos de función para cada tipo de funcionalidad y nivel de complejidad.
+
+3. Interpretación de los Puntos de Función
+
+La métrica obtenida indica que el sistema tiene un total de 121 Puntos de Función en relación a las Entradas Externas, 90 puntos en relación a las Salidas Externas,
+0 puntos en relación a las Consultas Externas, 0 puntos en relación a los Archivos Lógicos Internos y 154 puntos en relación a los Archivos Lógicos Externos.
+Estos valor ayuda a estimar la carga de trabajo en términos de desarrollo y mantenimiento del sistema, ya que, a mayor cantidad de puntos, mayor será el esfuerzo necesario.
+
+4. Factor de Ajuste
+
+Luego de realizar el calculo de los puntos de función se realizo el factor de ajuste en base a las 14 preguntas el puntuación del factor concluyo en 30 puntos.
+
+Para realizar el punto de función ajustado se realizaron los siguientes pasos.
+
+se realizo el siguiente calculo:
+
+365 x [ 0,65 + (0,01 x 30)] = 365 x 0,93 
+
+El resultado fue el siguiente: 364.75 PF ajustado.
+
+En base a ese resultado se realizo el calculo de las Horas de Proyecto.
+
+Se realizaron los siguientes cálculos:
+
+419,9(PF Ajustado) x 8(Nivel de Lenguaje)= 2774 hs Hombre
+
+Horas por persona: 2774 / 5 = 554.8 hs Hombre
+
+Horas diarias de trabajo: 554.8 / 8 hs diarias 
+de trabajo= 69.35 días por persona
+
+Meses de trabajo: 69.35 / 26 días del mes Sin contar los domingos = 2.66 alrededor de 2 meses y 2 semanas y media.
+
+5. Costos de Proyecto.
+
+Para calcular el costo estimado del proyecto se realizaron los siguientes cálculos:
+
+Costo = (Desarrolladores x Duración en meses x sueldos)
+
+Sueldo promedio por Desarrollador= $66.875,00 
+
+Calculo:
+
+(5 x 2.66 x 66.875)
+
+Costo = $889.437,5 pesos UY
+
+6. Conclusión 
+
+Luego de realizar todos los cálculos los resultados son los siguientes:
+
+Tiempo aproximado de duración del proyecto: 2 meses y 2 semanas y media.
+Costo aproximado del proyecto: $889.437,5 pesos UY
+
+
